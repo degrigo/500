@@ -17,6 +17,6 @@ var_dump($e);
 // Divisão
 $f = $a / $b;
 var_dump($f);
-// Módulo
+// Módulo (subtrai o valor relacionado entre duas variáveis)
 $g = $a % $b;
 var_dump($g);
