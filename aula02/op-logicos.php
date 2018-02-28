@@ -22,7 +22,7 @@ var_dump(true || true);
 var_dump(true || false);
 echo "<hr>";
 
-// Um ou outro. Nunca os dois.
+// Um ou outro forem verdadeiros. Nunca os dois.
 var_dump(true xor true);
 var_dump(true xor false);
 var_dump(true xor true);
