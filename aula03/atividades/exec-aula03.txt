@@ -1,0 +1,5 @@
+1 - https://github.com/lucasmarques4linux/ex-500/tree/master/operadores
+2 - https://github.com/lucasmarques4linux/ex-500/tree/master/strings
+3 - https://github.com/lucasmarques4linux/ex-500/tree/master/controle
+4 - https://github.com/lucasmarques4linux/ex-500/tree/master/repeticao
+5 - https://github.com/lucasmarques4linux/ex-500/tree/master/include
