@@ -1,0 +1,13 @@
+acessar MySQL: mysql -u root -p;
+
+mostrar bancos criados: SHOW DATABASES;
+
+criar banco de dados: CREATE DATABASE nome_banco;
+
+utilizar banco de dados: USE nome_banco;
+
+criar tabela no banco: CREATE TABLE posts (id INTEGER, titulo VARCHAR(255), conteudo TEXT, PRIMARY KEY (id));
+
+verificar conteúdo da tabela: DESCRIBE posts;
+
+mostrar usuários e respectiva senha no banco:  SELECT User, Host, Password FROM mysql.user; 
