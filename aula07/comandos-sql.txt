@@ -94,9 +94,9 @@ EX9: SELECT * FROM posts ORDER BY autor LIMIT 2,4;
 Usado em paginação usando LIMIT.
 LIMIT: traz como resultado o limite de registros a serem exibidos na busca.
 
-EX10: SELECT * FROM posts LEFT JOIN usuarios ON posts.autor = usuarios.usuario;
-SELECT * FROM posts RIGHT JOIN usuarios ON posts.autor = usuarios.usuario;
-SELECT * FROM posts INNER JOIN usuarios ON posts.autor = usuarios.usuario;
+EX10: SELECT * FROM posts INNER JOIN usuarios ON posts.autor = usuarios.usuario_id;
+SELECT * FROM posts RIGHT JOIN usuarios ON posts.autor = usuarios.usuario_id;
+SELECT * FROM posts INNER JOIN usuarios ON posts.autor = usuarios.usuario_id;
 
 LEFT JOIN: preserva resultados que estão na tabela da esquerda (posts)
 RIGHT JOIN: preserva resultados que estão na tabela da direita (usuarios)
