@@ -1,0 +1,45 @@
+1 - Logar como sudo su
+2 - su postgres
+3 - psql
+
+Criar banco: CREATE DATABASES nome_banco;
+
+Criar usuário: CREATE USER tadeu PASSWORD '123';
+
+Listar bancos existentes: \l
+
+Listar usuários: \du
+
+Garantir todos os privilégios de certo banco ao usuário: ALTER DATABASE aula08 OWNER TO tadeu;
+
+Sair do postgres: \q
+
+exit - saior do usuário postgres
+
+exit - sair do serviço postgres
+
+Entrando no banco aula08 com usuário tadeu no host localhost - psql -h localhost -U tadeu aula08;
+
+listando tabelas: \dt
+
+criando tabelas:  CREATE TABLE usuarios(
+aula08(> id SERIAL PRIMARY KEY,
+aula08(> usuario VARCHAR(255) NOT NULL,
+aula08(> senha VARCHAR(40) NOT NULL
+aula08(> );
+
+comando SERIAL: seta a coluna do banco de dados como INTEIRO (INT), NOT NULL (NÃO NULO) e AUTO_INCREMENT (auto incrementador).
+
+\d nome_tabela: exibe inserido no conteúdo das tabelas 
+
+criando outra tabela: CREATE TABLE posts(
+id SERIAL PRIMARY KEY,
+usuario_id INT REFERENCES usuarios(id),
+post VARCHAR(140) NOT NULL 
+);
+
+REFERENCES: já referencia a tabela 1 e 2, criando a chave estrangeira automaticamente
+
+Alterando tabela posts: ALTER TABLE posts ALTER COLUMN usuario_id SET NOT NULL;
+ALTER COLUMN: seleciona a coluna no qual quero alterar
+SET: setando o valor como não nulo.
