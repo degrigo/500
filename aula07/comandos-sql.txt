@@ -1,4 +1,10 @@
+tutorial legal: https://gist.github.com/hofmannsven/9164408
+
 acessar MySQL: mysql -u root -p;
+
+criar usuário: CREATE USER 'tadeu'@'localhost' IDENTIFIED BY '@da4linux';
+
+garantindo privilégios: GRANT ALL PRIVILEGES ON *.* TO 'tadeu'@'localhost';
 
 mostrar bancos criados: SHOW DATABASES;
 
@@ -6,8 +12,92 @@ criar banco de dados: CREATE DATABASE nome_banco;
 
 utilizar banco de dados: USE nome_banco;
 
-criar tabela no banco: CREATE TABLE posts (id INTEGER, titulo VARCHAR(255), conteudo TEXT, PRIMARY KEY (id));
+criar tabela no banco: CREATE TABLE nome_tabela (id INTEGER, titulo VARCHAR(255), conteudo TEXT, PRIMARY KEY (id));
 
-verificar conteúdo da tabela: DESCRIBE posts;
+verificar conteúdo da tabela: DESCRIBE nome_tabela;
 
 mostrar usuários e respectiva senha no banco:  SELECT User, Host, Password FROM mysql.user; 
+
+deletar tabelas: DROP TABLE nome_tabela;
+
+deletar banco: DROP SCHEMA nome_banco;
+
+alterar dados tabela: ALTER TABLE posts MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+AUTO_INCREMENT = auto incrementa números de ids automaticamente;
+
+EX1: CREATE TABLE usuarios (
+    -> usuario_id INT NOT NULL AUTO_INCREMENT,
+    -> usuario VARCHAR(255) NOT NULL,
+    -> senha VARCHAR(40) NOT NULL,
+    -> PRIMARY KEY (usuario_id)
+    -> );
+
+Setar PRIMARY KEY (chave primária), define relacionamento entre duas tabelas existes.
+
+
+EX2: CREATE TABLE posts (
+    -> post_id INT NOT NULL AUTO_INCREMENT,
+    -> autor INT NOT NULL,
+    -> post VARCHAR(140) NOT NULL,
+    -> PRIMARY KEY (post_id),
+    -> FOREIGN KEY autor (autor) REFERENCES usuarios (usuario_id) ON UPDATE CASCADE ON DELETE CASCADE
+    -> );
+
+FOREIGN KEY (chave estrangeira)(nome do campo) e relaciona as tabelas através de uma coluna existente
+REFERENCES (tabela de usários) (coluna usuário_id) linka o relacionamento entre tabelas posts e usuarios.
+
+UPDATE CASCADE ON DELETE CASCADE = adiciona ou remove em cascata (ao mesmo tempo);
+
+Ex3: INSERT INTO usuarios (usuario, senha) VALUES ('Tadeu', '132');
+
+INSERT INTO: insere dentro da yabela usuários, dentro das colunas usuario e senha
+VALUES: valores a serem inseridos dentro das colunas usuario e senha.
+
+SELECT * FROM usuarios: Seleciona todos os valores (*)da tabela usuários.
+
+SELECT * FROM usuarios WHERE usuario_id = 2: Seleciona da tabela usuários, aonde valor da coluna id é igual a 2;
+
+EX4:
+UPDATE usuarios SET senha = '12233' WHERE usuario_id = 2;
+
+UPDATE: altera valores da tabela usuários
+SET: escolho a coluna aonde estou inserindo novos valores
+WHERE: aonde o id é igual a 2.
+
+Valor de AUTO_INCREMENT nunca volta. Se deletarmos id 2 e inserir um novo usuário, o id correspondente será 3.
+
+EX5: DELETE FROM usuarios WHERE usuario_id = 1;
+
+DELETE: deleta do campo usuários o registro selecionado.
+
+EX6: SELECT * FROM usuarios WHERE usuario_id >= 2;
+
+Conseguimos trazer valores com maior igual.
+
+EX7: SELECT * FROM usuarios WHERE usuario LIKE 'Daniela';
+
+LIKE: condição para busca por strings.
+
+Caracteres coringa podem ser inseridos como 'Daniela%', que traria todos os registros salvos como Daniela.
+
+INSERT INTO posts (autor, post) VALUES (2, "Meu terceiro post");
+INSERT INTO posts (autor, post) VALUES (3, "Meu terceiro post");
+
+EX8: SELECT * FROM posts ORDER BY autor;
+
+ORDER BY: Seleciona por ordem crescente os posts por ID do autor.
+DESC: ordem decrescente.
+
+EX9: SELECT * FROM posts ORDER BY autor LIMIT 2,4;
+
+Usado em paginação usando LIMIT.
+LIMIT: traz como resultado o limite de registros a serem exibidos na busca.
+
+EX10: SELECT * FROM posts LEFT JOIN usuarios ON posts.autor = usuarios.usuario;
+SELECT * FROM posts RIGHT JOIN usuarios ON posts.autor = usuarios.usuario;
+SELECT * FROM posts INNER JOIN usuarios ON posts.autor = usuarios.usuario;
+
+LEFT JOIN: preserva resultados que estão na tabela da esquerda (posts)
+RIGHT JOIN: preserva resultados que estão na tabela da direita (usuarios)
+INNER JOIN: preserva resultados que DA INTERSECÇÃO das duas tabelas acima (posts e usuarios)
