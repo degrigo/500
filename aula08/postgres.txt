@@ -18,7 +18,7 @@ exit - saior do usuário postgres
 
 exit - sair do serviço postgres
 
-Entrando no banco aula08 com usuário tadeu no host localhost - psql -h localhost -U tadeu aula08;
+Entrando no banco aula08 com usuário tadeu no host localhost: psql -h localhost -U tadeu aula08;
 
 listando tabelas: \dt
 
