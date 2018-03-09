@@ -101,3 +101,8 @@ SELECT * FROM posts INNER JOIN usuarios ON posts.autor = usuarios.usuario_id;
 LEFT JOIN: preserva resultados que estão na tabela da esquerda (posts)
 RIGHT JOIN: preserva resultados que estão na tabela da direita (usuarios)
 INNER JOIN: preserva resultados que DA INTERSECÇÃO das duas tabelas acima (posts e usuarios)
+
+
+// alterar relacionamento entre as tabelas manualmente.
+// nome da chave de relaciomamento entre campos deve ser único mesmo que a tabela já contenha outros relacionamentos0 ,
+ALTER TABLE tb_turmas ADD CONSTRAINT tb_turmas2_id_fkey FOREIGN KEY (periodo_id) REFERENCES tb_periodos(id);
